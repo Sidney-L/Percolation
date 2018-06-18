@@ -30,30 +30,23 @@ Performance requirements.  The constructor should take time proportional to n2; 
 
 Monte Carlo simulation. To estimate the percolation threshold, consider the following computational experiment:
 
-    Initialize all sites to be blocked.
-
-    Repeat the following until the system percolates:
-
-        Choose a site uniformly at random among all blocked sites.
-
-        Open the site. 
-
-    The fraction of sites that are opened when the system percolates provides an estimate of the percolation threshold. 
+Initialize all sites to be blocked.
+Repeat the following until the system percolates:
+    Choose a site uniformly at random among all blocked sites.
+    Open the site. 
+The fraction of sites that are opened when the system percolates provides an estimate of the percolation threshold. 
 
 For example, if sites are opened in a 20-by-20 lattice according to the snapshots below, then our estimate of the percolation threshold is 204/400 = 0.51 because the system percolates when the 204th site is opened. 
+
 ![percolation-50](https://github.com/Sidney-L/Percolation/raw/master/pic/percolation-50.png)
 ![percolation-100](https://github.com/Sidney-L/Percolation/raw/master/pic/percolation-100.png)
 ![percolation-150](https://github.com/Sidney-L/Percolation/raw/master/pic/percolation-150.png)
 ![percolation-204](https://github.com/Sidney-L/Percolation/raw/master/pic/percolation-204.png)
-By repeating this computation experiment T times and averaging the results, we obtain a more accurate estimate of the percolation threshold. Let xt be the fraction of open sites in computational experiment t. The sample mean x¯¯¯
 
-provides an estimate of the percolation threshold; the sample standard deviation s; measures the sharpness of the threshold.
-
-
-
+By repeating this computation experiment T times and averaging the results, we obtain a more accurate estimate of the percolation threshold. Let xt be the fraction of open sites in computational experiment t. The sample mean provides an estimate of the percolation threshold; the sample standard deviation s measures the sharpness of the threshold.
+![formula1](https://github.com/Sidney-L/Percolation/raw/master/pic/formula1.png)
 Assuming T is sufficiently large (say, at least 30), the following provides a 95% confidence interval for the percolation threshold:
-
-
+![formula2](https://github.com/Sidney-L/Percolation/raw/master/pic/formula2.png)
 
 To perform a series of computational experiments, create a data type PercolationStats with the following API.
 
@@ -94,9 +87,9 @@ Also, include a main() method that takes two command-line arguments n and T, per
 
 Analysis of running time and memory usage (optional and not graded). Implement the Percolation data type using the quick find algorithm in QuickFindUF.
 
-    Use Stopwatch to measure the total running time of PercolationStats for various values of n and T. How does doubling n affect the total running time? How does doubling T affect the total running time? Give a formula (using tilde notation) of the total running time on your computer (in seconds) as a single function of both n and T.
+Use Stopwatch to measure the total running time of PercolationStats for various values of n and T. How does doubling n affect the total running time? How does doubling T affect the total running time? Give a formula (using tilde notation) of the total running time on your computer (in seconds) as a single function of both n and T.
 
-    Using the 64-bit memory-cost model from lecture, give the total memory usage in bytes (using tilde notation) that a Percolation object uses to model an n-by-n percolation system. Count all memory that is used, including memory for the union–find data structure. 
+Using the 64-bit memory-cost model from lecture, give the total memory usage in bytes (using tilde notation) that a Percolation object uses to model an n-by-n percolation system. Count all memory that is used, including memory for the union–find data structure. 
 
 Now, implement the Percolation data type using the weighted quick union algorithm in WeightedQuickUnionUF. Answer the questions in the previous paragraph.
 
